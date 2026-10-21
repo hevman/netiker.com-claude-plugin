@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "netiker": {
+      "type": "http",
+      "url": "https://app.netiker.com/mcp",
+      "oauth": { "scopes": "reports:read runs:read" }
+    }
+  }
+}

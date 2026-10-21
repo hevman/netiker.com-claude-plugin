@@ -1,0 +1,32 @@
+name: Validate and package Netiker Claude plugin
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node scripts/validate.mjs
+      - name: Validate native Claude manifests
+        run: |
+          npx --yes --package @anthropic-ai/claude-code@2.1.306 claude plugin validate .
+          npx --yes --package @anthropic-ai/claude-code@2.1.306 claude plugin validate ./plugins/netiker --profile directory
+      - name: Build uploadable plugin ZIP
+        run: |
+          mkdir -p dist
+          version=$(node -p "JSON.parse(require('fs').readFileSync('plugins/netiker/.claude-plugin/plugin.json','utf8')).version")
+          cd plugins/netiker
+          zip -r "../../dist/netiker-claude-plugin-${version}.zip" .claude-plugin .mcp.json assets skills LICENSE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: netiker-claude-plugin
+          path: dist/*.zip

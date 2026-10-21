@@ -1,0 +1,11 @@
+{
+  "name": "netiker",
+  "version": "0.1.0",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://netiker.com/privacy",
+  "description": "Analyze your saved Netiker marketing and SEO reports, including Google Search Console, Bing and Ahrefs. Read-only OAuth access with guidance for correct aggregation and report comparisons.",
+  "author": { "name": "Netiker", "url": "https://netiker.com" },
+  "homepage": "https://netiker.com",
+  "repository": "https://github.com/hevman/netiker.com-claude-plugin",
+  "keywords": ["seo", "marketing", "analytics", "gsc", "bing", "ahrefs"]
+}

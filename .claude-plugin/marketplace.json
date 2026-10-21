@@ -1,0 +1,13 @@
+{
+  "name": "netiker",
+  "owner": { "name": "Netiker", "url": "https://netiker.com" },
+  "metadata": { "description": "Netiker marketing and SEO report analysis for Claude." },
+  "plugins": [
+    {
+      "name": "netiker",
+      "source": "./plugins/netiker",
+      "description": "Read and analyze saved Netiker reports from GSC, Bing, Ahrefs and other sources.",
+      "category": "productivity"
+    }
+  ]
+}
